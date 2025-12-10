@@ -1,10 +1,24 @@
+import { useChatStore } from '@/stores/useChatStore'
 import { SidebarInset } from '../ui/sidebar'
 import ChatWindowHeader from './ChatWindowHeader'
+import ChatWindowSkeleton from './ChatWindowSkeleton'
 
 function ChatWellcomeScreen() {
+  const { activeConversationId, conversations, messageLoading: loading } = useChatStore()
+
+  const selectedConvo = conversations.find((convo) => convo._id === activeConversationId) ?? null
+
+  if (!selectedConvo) {
+    return <ChatWellcomeScreen />
+  }
+
+  if (loading) {
+    return <ChatWindowSkeleton />
+  }
+
   return (
     <SidebarInset className="flex w-full h-full bg-transparent">
-      <ChatWindowHeader />
+      <ChatWindowHeader chat={selectedConvo} />
       <div className="flex bg-primary-foreground rounded-2xl flex-1 items-center justify-center">
         <div className="text-center">
           <div className="size-24 mx-auto mb-6 bg-gradient-chat rounded-full flex items-center justify-center shadow-glow pulse-ring">

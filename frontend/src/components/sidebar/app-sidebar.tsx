@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Command, Moon, Sun } from 'lucide-react'
+import { Moon, Sun } from 'lucide-react'
 
 import { NavUser } from '@/components/sidebar/nav-user'
 import {

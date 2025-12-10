@@ -1,5 +1,3 @@
-import React from 'react'
-
 function ChatWindowSkeleton() {
   return <div>ChatWindowSkeleton</div>
 }
